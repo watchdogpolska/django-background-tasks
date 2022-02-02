@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-__version__ = '1.2.5.2'
+__version__ = '1.2.5.3'
 
 default_app_config = 'background_task.apps.BackgroundTasksAppConfig'
 
