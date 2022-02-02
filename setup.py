@@ -9,7 +9,7 @@ setup(
     name='django4-background-tasks',
     version=version,
     description='Database backed asynchronous task queue',
-    long_description=codecs.open('README.rst', encoding='utf-8').read(),
+    long_description=open('README.rst').read(),
     author='arteria GmbH, John Montgomery -> Adapted by André Meneses',
     author_email='andre@meneses.pt',
     url='http://github.com/meneses-pt/django-background-tasks',

@@ -1,6 +1,6 @@
-=======================
-Django4 Background Tasks
-=======================
+=========================
+Django 4 Background Tasks
+=========================
 
 .. image:: https://travis-ci.org/arteria/django-background-tasks.svg?branch=master
     :target: https://travis-ci.org/arteria/django-background-tasks

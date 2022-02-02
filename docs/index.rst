@@ -1,6 +1,6 @@
-=======================
-Django Background Tasks
-=======================
+=========================
+Django 4 Background Tasks
+=========================
 
 
 Django Background Task is a databased-backed work queue for Django_, loosely based around Ruby's DelayedJob_ library. This project was adopted and adapted from this_ repo.
