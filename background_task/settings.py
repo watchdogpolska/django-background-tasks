@@ -12,6 +12,7 @@ except Exception:
 class AppSettings(object):
     """
     """
+
     @property
     def MAX_ATTEMPTS(self):
         """Control how many times a task will be attempted."""
@@ -57,5 +58,6 @@ class AppSettings(object):
         else:
             prefix = '-'
         return prefix
+
 
 app_settings = AppSettings()

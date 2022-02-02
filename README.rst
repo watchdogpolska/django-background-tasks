@@ -1,5 +1,5 @@
 =======================
-Django Background Tasks
+Django4 Background Tasks
 =======================
 
 .. image:: https://travis-ci.org/arteria/django-background-tasks.svg?branch=master
@@ -39,7 +39,7 @@ See `Read the docs`_.
 Donations
 ========= 
 
-``django-background-tasks`` is free software. If you find it useful and would like to give back, please consider to make a donation using Bitcoin_ or Paypal_. Thank you!
+``django4-background-tasks`` is free software. If you find it useful and would like to give back, please consider to make a donation using Bitcoin_ or Paypal_. Thank you!
 
 .. _Bitcoin: https://blockchain.info/payment_request?address=34vD9fADYX9QAcMfJUB4c2pYd19SG2toZ9
 .. _PayPal: https://www.paypal.me/arteriagmbh
