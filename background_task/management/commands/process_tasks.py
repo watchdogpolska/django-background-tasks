@@ -6,7 +6,7 @@ import time
 
 from django import VERSION
 from django.core.management.base import BaseCommand
-from django.db import close_connection
+from django.db import close_old_connections
 from django.utils import autoreload
 
 from background_task.tasks import tasks, autodiscover
@@ -104,7 +104,7 @@ class Command(BaseCommand):
 
             if not self._tasks.run_next_task(queue):
                 # there were no tasks in the queue, let's recover.
-                close_connection()
+                close_old_connections()
                 logger.debug('waiting for tasks')
                 time.sleep(sleep)
             else:
