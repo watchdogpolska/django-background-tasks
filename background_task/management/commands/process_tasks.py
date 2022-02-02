@@ -6,12 +6,11 @@ import time
 
 from django import VERSION
 from django.core.management.base import BaseCommand
+from django.db import close_connection
 from django.utils import autoreload
 
 from background_task.tasks import tasks, autodiscover
 from background_task.utils import SignalManager
-from compat import close_connection
-
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +23,7 @@ def _configure_log_std():
     class StdErrWrapper(object):
         def write(self, s):
             logger.error(s)
+
     sys.stdout = StdOutWrapper()
     sys.stderr = StdErrWrapper()
 
@@ -33,31 +33,31 @@ class Command(BaseCommand):
 
     # Command options are specified in an abstract way to enable Django < 1.8 compatibility
     OPTIONS = (
-        (('--duration', ), {
+        (('--duration',), {
             'action': 'store',
             'dest': 'duration',
             'type': int,
             'default': 0,
             'help': 'Run task for this many seconds (0 or less to run forever) - default is 0',
         }),
-        (('--sleep', ), {
+        (('--sleep',), {
             'action': 'store',
             'dest': 'sleep',
             'type': float,
             'default': 5.0,
             'help': 'Sleep for this many seconds before checking for new tasks (if none were found) - default is 5',
         }),
-        (('--queue', ), {
+        (('--queue',), {
             'action': 'store',
             'dest': 'queue',
             'help': 'Only process tasks on this named queue',
         }),
-        (('--log-std', ), {
+        (('--log-std',), {
             'action': 'store_true',
             'dest': 'log_std',
             'help': 'Redirect stdout and stderr to the logging system',
         }),
-        (('--dev', ), {
+        (('--dev',), {
             'action': 'store_true',
             'dest': 'dev',
             'help': 'Auto-reload your code on changes. Use this only for development',
