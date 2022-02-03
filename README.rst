@@ -33,4 +33,4 @@ Docs
 ====
 See `Read the docs`_.
 
-.. _Read the docs: http://django-background-tasks.readthedocs.io/en/latest/
+.. _Read the docs: http://django4-background-tasks.readthedocs.io/en/latest/
