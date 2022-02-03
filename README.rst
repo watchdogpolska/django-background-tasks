@@ -2,17 +2,16 @@
 Django 4 Background Tasks
 =========================
 
-.. image:: https://travis-ci.org/arteria/django-background-tasks.svg?branch=master
-    :target: https://travis-ci.org/arteria/django-background-tasks
-    :alt: Build Status
-.. image:: https://coveralls.io/repos/arteria/django-background-tasks/badge.svg?branch=master
-    :target: https://coveralls.io/repos/arteria/django-background-tasks/badge.svg?branch=master&service=github
-    :alt: Coverage Status
-.. image:: https://readthedocs.org/projects/django-background-tasks/badge/?version=latest
-    :target: http://django-background-tasks.readthedocs.io/en/latest/?badge=latest
+.. note::
+   This is an adaptation of django-background-tasks that removes django-compat and makes other small changes to allow compatilibity with Django 4.0.
+
+   It is also compatible with Django 3 (at least).
+
+.. image:: https://readthedocs.org/projects/django4-background-tasks/badge/?version=latest
+    :target: http://django4-background-tasks.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-.. image:: https://img.shields.io/pypi/v/django-background-tasks.svg
-    :target: https://pypi.python.org/pypi/django-background-tasks
+.. image:: https://img.shields.io/pypi/v/django4-background-tasks.svg
+    :target: https://pypi.python.org/pypi/django4-background-tasks
     :alt: PyPI
 
 Django Background Task is a database-backed work queue for Django, loosely based around `Ruby's DelayedJob`_ library. This project was adopted and adapted from lilspikey_ `django-background-task`.
@@ -35,11 +34,3 @@ Docs
 See `Read the docs`_.
 
 .. _Read the docs: http://django-background-tasks.readthedocs.io/en/latest/
-
-Donations
-========= 
-
-``django4-background-tasks`` is free software. If you find it useful and would like to give back, please consider to make a donation using Bitcoin_ or Paypal_. Thank you!
-
-.. _Bitcoin: https://blockchain.info/payment_request?address=34vD9fADYX9QAcMfJUB4c2pYd19SG2toZ9
-.. _PayPal: https://www.paypal.me/arteriagmbh

@@ -3,6 +3,12 @@ Django 4 Background Tasks
 =========================
 
 
+.. note::
+   This is an adaptation of django-background-tasks that removes django-compat and makes other small changes to allow compatilibity with Django 4.0.
+
+   It is also compatible with Django 3 (at least).
+
+
 Django Background Task is a databased-backed work queue for Django_, loosely based around Ruby's DelayedJob_ library. This project was adopted and adapted from this_ repo.
 
 To avoid conflicts on PyPI we renamed it to django-background-tasks (plural). For an easy upgrade from django-background-task to django-background-tasks, the internal module structure were left untouched.
@@ -42,8 +48,8 @@ Migrate your database:
 
 Supported versions and compatibility
 ====================================
-* Python: 3.4-3.8
-* Django: 4.0
+* Python: 3.8-3.10
+* Django: 3.0-4.0
 
 
 Creating and registering tasks
@@ -209,15 +215,13 @@ Contributing
 ============
 
 Anyone and everyone is welcome to contribute. Please take a moment to review the `guidelines for contributing
-<https://github.com/arteria/django-background-tasks/blob/master/CONTRIBUTING.md>`_.
+<https://github.com/meneses-pt/django-background-tasks/blob/master/CONTRIBUTING.md>`_.
 
 
 .. _Django: http://www.djangoproject.com/
 .. _DelayedJob: http://github.com/tobi/delayed_job
 .. _supervisord: http://supervisord.org/
 .. _this: https://github.com/lilspikey/django-background-task
-.. _compat:  https://github.com/arteria/django-compat
-.. _django-compat:  https://github.com/arteria/django-compat
 .. _25: https://github.com/arteria/django-background-tasks/issues/25
 .. _here: https://github.com/hnakamur/django-background-tasks-example/
 .. _niceness: https://en.wikipedia.org/wiki/Nice_(Unix)

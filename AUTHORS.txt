@@ -25,5 +25,6 @@ Contributors
 * Aleksandr Levchuk (alevchuk)
 * Kai-Lun Huang (kaibaooo)
 * cedricfarinazzo
+* André Meneses (meneses.pt)
 
 Your name could stand here :)

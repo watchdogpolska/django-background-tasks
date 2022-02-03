@@ -10,7 +10,7 @@ setup(
     version=version,
     description='Database backed asynchronous task queue',
     long_description=open('README.rst').read(),
-    author='arteria GmbH, John Montgomery -> Adapted by André Meneses',
+    author='André Meneses (adapting from arteria GmbH, John Montgomery)',
     author_email='andre@meneses.pt',
     url='http://github.com/meneses-pt/django-background-tasks',
     license='BSD',
