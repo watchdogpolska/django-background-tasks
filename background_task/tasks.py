@@ -8,6 +8,7 @@ import logging
 import os
 import sys
 
+from django.apps import apps
 from django.db.utils import OperationalError
 from django.utils import timezone
 from six import python_2_unicode_compatible
@@ -308,9 +309,9 @@ def autodiscover():
     import imp
     from django.conf import settings
 
-    for app in settings.INSTALLED_APPS:
+    for app_config in apps.get_app_configs():
         try:
-            app_path = import_module(app).__path__
+            app_path = import_module(app_config.name).__path__
         except (AttributeError, ImportError):
             continue
         try:
@@ -318,4 +319,4 @@ def autodiscover():
         except ImportError:
             continue
 
-        import_module("%s.tasks" % app)
+        import_module("%s.tasks" % app_config.name)
