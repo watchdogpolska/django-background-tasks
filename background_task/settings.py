@@ -34,6 +34,16 @@ class AppSettings(object):
         return self.MAX_RUN_TIME
 
     @property
+    def BACKOFF_MULTIPLIER(self):
+        """Backoff multiplier for retries."""
+        return getattr(settings, 'BACKOFF_MULTIPLIER', 4)
+
+    @property
+    def BACKGROUND_TASK_BACKOFF_MULTIPLIER(self):
+        """Backoff multiplier for retries."""
+        return self.BACKOFF_MULTIPLIER
+
+    @property
     def BACKGROUND_TASK_RUN_ASYNC(self):
         """Control if tasks will run asynchronous in a ThreadPool."""
         return getattr(settings, 'BACKGROUND_TASK_RUN_ASYNC', False)

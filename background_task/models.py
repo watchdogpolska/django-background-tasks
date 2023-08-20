@@ -242,7 +242,7 @@ class Task(models.Model):
 
     def reschedule(self, type, err, traceback):
         '''
-        Set a new time to run the task in future, or create a CompletedTask and delete the Task
+        Set a new time to run the task in the future, or create a CompletedTask and delete the Task
         if it has reached the maximum of allowed attempts
         '''
         self.last_error = self._extract_error(type, err, traceback)
@@ -254,7 +254,8 @@ class Task(models.Model):
             task_failed.send(sender=self.__class__, task_id=self.id, completed_task=completed)
             self.delete()
         else:
-            backoff = timedelta(seconds=(self.attempts ** 4) + 5)
+            backoff_multiplier = app_settings.BACKGROUND_TASK_BACKOFF_MULTIPLIER
+            backoff = timedelta(seconds=int(self.attempts ** backoff_multiplier) + 5)
             self.run_at = timezone.now() + backoff
             logger.warning('Rescheduling task %s for %s later at %s', self,
                 backoff, self.run_at)
