@@ -249,7 +249,7 @@ class Task(models.Model):
         self.increment_attempts()
         if self.has_reached_max_attempts() or isinstance(err, InvalidTaskError):
             self.failed_at = timezone.now()
-            logger.warning('Marking task %s as failed', self)
+            logger.warning('Marking task %s as failed\n', self)
             completed = self.create_completed_task()
             task_failed.send(sender=self.__class__, task_id=self.id, completed_task=completed)
             self.delete()
@@ -257,7 +257,7 @@ class Task(models.Model):
             backoff_multiplier = app_settings.BACKGROUND_TASK_BACKOFF_MULTIPLIER
             backoff = timedelta(seconds=int(self.attempts ** backoff_multiplier) + 5)
             self.run_at = timezone.now() + backoff
-            logger.warning('Rescheduling task %s for %s later at %s', self,
+            logger.warning('Rescheduling task %s for %s later at %s\n', self,
                 backoff, self.run_at)
             task_rescheduled.send(sender=self.__class__, task=self)
             self.locked_by = None

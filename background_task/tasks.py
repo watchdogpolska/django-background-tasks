@@ -50,12 +50,12 @@ def bg_runner(proxy_task, task=None, *args, **kwargs):
             signals.task_successful.send(sender=task.__class__, task_id=task.id, completed_task=completed)
             task.create_repetition()
             task.delete()
-            logger.info('Ran task and deleting %s', task)
+            logger.info('Ran task and deleting %s\n', task)
 
     except Exception as ex:
         t, e, traceback = sys.exc_info()
         if task:
-            logger.error('Rescheduling %s', task, exc_info=(t, e, traceback))
+            logger.error('Rescheduling %s\n', task, exc_info=(t, e, traceback))
             signals.task_error.send(sender=ex.__class__, task=task)
             task.reschedule(t, e, traceback)
         del traceback
@@ -252,7 +252,7 @@ class DBTaskRunner(object):
                     return locked_task
             return None
         except OperationalError:
-            logger.warning('Failed to retrieve tasks. Database unreachable.')
+            logger.warning('Failed to retrieve tasks. Database unreachable.\n')
 
     def run_task(self, tasks, task):
         logger.info('Running %s', task)
