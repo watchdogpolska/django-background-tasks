@@ -1,0 +1,15 @@
+---
+# yamllint disable-line-length
+version: "2.1"
+# This is application’s services configuration for development purposes only.
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/code
+
