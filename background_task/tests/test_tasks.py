@@ -409,7 +409,7 @@ class TestTaskModel(TransactionTestCase):
         self.assertEqual(completed_task.repeat_until, task.repeat_until)
 
 
-class TestTaskResultInCompletedTaskLog(TransactionTestCase):
+class TestTaskResultInCompletedTask(TransactionTestCase):
     def setUp(self):
 
         @tasks.background(name="task_result")

@@ -11,7 +11,6 @@ import sys
 from django.apps import apps
 from django.db.utils import OperationalError
 from django.utils import timezone
-from six import python_2_unicode_compatible
 
 from background_task.exceptions import BackgroundTaskError
 from background_task.models import Task
@@ -301,7 +300,6 @@ class DBTaskRunner(object):
             return False
 
 
-@python_2_unicode_compatible
 class TaskProxy(object):
     def __init__(
         self, name, task_function, schedule, queue, remove_existing_tasks, runner
