@@ -21,7 +21,7 @@ jobs:
       - name: Show installed dependencies
         run: docker-compose run app pip list
       - name: Build test
-        run: docker-compose run tox
+        run: docker-compose run app tox
       - name: Show docker process
         run: docker ps
         if: always()
