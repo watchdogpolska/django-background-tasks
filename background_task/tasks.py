@@ -11,7 +11,6 @@ import sys
 from django.apps import apps
 from django.db.utils import OperationalError
 from django.utils import timezone
-from six import python_2_unicode_compatible
 
 from background_task.exceptions import BackgroundTaskError
 from background_task.models import Task
@@ -43,12 +42,11 @@ def bg_runner(proxy_task, task=None, *args, **kwargs):
                 task = task_qs[0]
         if func is None:
             raise BackgroundTaskError("Function is None, can't execute!")
-        func(*args, **kwargs)
-
+        func_result = func(*args, **kwargs)
         if task:
             # task done, so can delete it
             task.increment_attempts()
-            completed = task.create_completed_task()
+            completed = task.create_completed_task(result=func_result)
             signals.task_successful.send(
                 sender=task.__class__, task_id=task.id, completed_task=completed
             )
@@ -302,7 +300,6 @@ class DBTaskRunner(object):
             return False
 
 
-@python_2_unicode_compatible
 class TaskProxy(object):
     def __init__(
         self, name, task_function, schedule, queue, remove_existing_tasks, runner
