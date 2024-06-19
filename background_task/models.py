@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 from hashlib import sha1
-import io
 import json
 import logging
 import os
@@ -188,9 +187,6 @@ class Task(models.Model):
     # details of the error that occurred
     last_error = models.TextField(blank=True)
 
-    # details of task log output
-    log = models.TextField(blank=True)
-
     # details of who's trying to run the task at the moment
     locked_by = models.CharField(max_length=64, db_index=True, null=True, blank=True)
     locked_at = models.DateTimeField(db_index=True, null=True, blank=True)
@@ -288,7 +284,7 @@ class Task(models.Model):
             self.locked_at = None
             self.save()
 
-    def create_completed_task(self):
+    def create_completed_task(self, result=None):
         """
         Returns a new CompletedTask instance with the same values
         """
@@ -302,6 +298,7 @@ class Task(models.Model):
             attempts=self.attempts,
             failed_at=self.failed_at,
             last_error=self.last_error,
+            result=result,
             locked_by=self.locked_by,
             locked_at=self.locked_at,
             verbose_name=self.verbose_name,
@@ -423,6 +420,9 @@ class CompletedTask(models.Model):
     failed_at = models.DateTimeField(db_index=True, null=True, blank=True)
     # details of the error that occurred
     last_error = models.TextField(blank=True)
+
+    # task resut
+    result = models.TextField(blank=True, null=True)
 
     # details of who's trying to run the task at the moment
     locked_by = models.CharField(max_length=64, db_index=True, null=True, blank=True)

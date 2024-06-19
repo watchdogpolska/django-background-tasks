@@ -43,12 +43,11 @@ def bg_runner(proxy_task, task=None, *args, **kwargs):
                 task = task_qs[0]
         if func is None:
             raise BackgroundTaskError("Function is None, can't execute!")
-        func(*args, **kwargs)
-
+        func_result = func(*args, **kwargs)
         if task:
             # task done, so can delete it
             task.increment_attempts()
-            completed = task.create_completed_task()
+            completed = task.create_completed_task(result=func_result)
             signals.task_successful.send(
                 sender=task.__class__, task_id=task.id, completed_task=completed
             )

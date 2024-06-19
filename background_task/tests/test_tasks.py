@@ -409,6 +409,26 @@ class TestTaskModel(TransactionTestCase):
         self.assertEqual(completed_task.repeat_until, task.repeat_until)
 
 
+class TestTaskResultInCompletedTaskLog(TransactionTestCase):
+    def setUp(self):
+
+        @tasks.background(name="task_result")
+        def task_result():
+            return "This is a function result"
+
+        self.task_result = task_result
+        self.task = self.task_result()
+        self.task_id = self.task.id
+
+    def test_string_task_result(self):
+        self.assertEqual(Task.objects.count(), 1)
+        self.assertEqual(Task.objects.all()[0].id, self.task_id)
+        run_next_task()
+        self.assertEqual(1, CompletedTask.objects.count())
+        completed_task = CompletedTask.objects.all()[0]
+        self.assertEqual("This is a function result", completed_task.result)
+
+
 class TestTasks(TransactionTestCase):
 
     def setUp(self):
