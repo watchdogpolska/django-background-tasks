@@ -39,7 +39,7 @@ class TaskAdmin(admin.ModelAdmin):
         "locked_by_pid_running",
     ]
     actions = [inc_priority, dec_priority]
-    list_filter = ["task_name", "run_at", "priority", "attempts", "has_error"]
+    list_filter = ["task_name", "has_error", "attempts", "priority"]
 
 
 class CompletedTaskAdmin(admin.ModelAdmin):
@@ -58,6 +58,7 @@ class CompletedTaskAdmin(admin.ModelAdmin):
         "locked_by",
         "locked_by_pid_running",
     ]
+    list_filter = ["task_name", "has_error", "attempts", "priority"]
 
 
 admin.site.register(Task, TaskAdmin)
