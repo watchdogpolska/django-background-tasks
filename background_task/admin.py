@@ -39,6 +39,7 @@ class TaskAdmin(admin.ModelAdmin):
         "locked_by_pid_running",
     ]
     actions = [inc_priority, dec_priority]
+    list_filter = ["task_name", "run_at", "priority", "attempts", "has_error"]
 
 
 class CompletedTaskAdmin(admin.ModelAdmin):
