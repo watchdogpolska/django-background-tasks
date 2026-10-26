@@ -10,6 +10,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    # HOST_UID/HOST_GID are exported by the Makefile; plain docker-compose runs as root
+    user: "${HOST_UID:-0}:${HOST_GID:-0}"
+    environment:
+      # Writable HOME for pip/tox/black caches when running as a non-root user
+      HOME: /tmp
     volumes:
       - .:/code
 
