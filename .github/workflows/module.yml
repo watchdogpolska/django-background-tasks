@@ -14,14 +14,14 @@ jobs:
         with:
           lfs: true
       - name: Build application
-        run: docker-compose build app
+        run: docker compose build app
         env:
           PYTHON_VERSION: "3.12"
           DJANGO_VERSION: "4.2"
       - name: Show installed dependencies
-        run: docker-compose run app pip list
+        run: docker compose run --rm -T app pip list
       - name: Test application
-        run: docker-compose run app tox
+        run: docker compose run --rm -T app tox
       - name: Show docker process
         run: docker ps
         if: always()
