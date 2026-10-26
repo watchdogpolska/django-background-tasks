@@ -4,9 +4,7 @@ Django 4 Background Tasks
 
 
 .. note::
-   This is an adaptation of django-background-tasks that removes django-compat and makes other small changes to allow compatilibity with Django 4.0.
-
-   It is also compatible with Django 3 (at least).
+   This is an adaptation of django-background-tasks that removes django-compat and makes other small changes to allow compatibility with Django 4.2 and 5.2.
 
 
 Django Background Task is a databased-backed work queue for Django_, loosely based around Ruby's DelayedJob_ library. This project was adopted and adapted from this_ repo.
@@ -48,8 +46,8 @@ Migrate your database:
 
 Supported versions and compatibility
 ====================================
-* Python: 3.8-3.10
-* Django: 3.0-4.0
+* Python: 3.12
+* Django: 4.2, 5.2
 
 
 Creating and registering tasks
@@ -204,11 +202,12 @@ Hiroaki Nakamura has written an example project demonstrating how django-backgro
 Tests
 =====
 
-You can run the test suite on all supported versions of Django and Python:
+You can run the test suite on all supported versions of Django and Python in Docker:
 
 .. code-block:: bash
 
-    $ tox
+    $ make build
+    $ make tox
 
 
 Contributing
